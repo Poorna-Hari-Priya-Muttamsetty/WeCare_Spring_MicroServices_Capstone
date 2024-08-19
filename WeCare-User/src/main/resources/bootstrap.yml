@@ -1,0 +1,20 @@
+server :
+  port : 1112
+  
+spring:
+  application : 
+    name : WeCare-User
+  cloud :
+    consul :
+      host : localhost
+      config :
+        fail-fast : true
+        enabled : true
+        prefix : config
+        defaultContext: application
+        data-key: data
+        profileSeparator: '::'
+        format: YAML
+      discovery :
+        hostname : localhost
+        health-check-path: /WeCare/actuator/health

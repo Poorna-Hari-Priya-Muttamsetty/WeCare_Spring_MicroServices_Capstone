@@ -1,0 +1,25 @@
+server :
+  port : 1111
+  
+spring :
+  application :
+    name : WeCare-Gateway
+  cloud :
+    gateway :
+      discovery:
+        locator :
+          enabled : true
+      routes :
+        - id : WeCare-User
+          uri : lb://WeCare-User
+          predicates :
+            - Path=/WeCare/user/**
+        - id : WeCare-LifeCoach
+          uri : lb://WeCare-LifeCoach
+          predicates :
+            - Path=/WeCare/lifeCoach/**
+        - id : WeCare-Application
+          uri : lb://WeCare-Application
+          predicates :
+            - Path=/WeCare/app/**
+    
